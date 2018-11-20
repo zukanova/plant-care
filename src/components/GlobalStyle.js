@@ -8,6 +8,7 @@ export default createGlobalStyle`
 }
 
 body {
+  height: 100Vh;    
   margin: 0;
   padding: 0;
   

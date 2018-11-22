@@ -24,7 +24,7 @@ storiesOf('Card', module).add('card', () => (
 storiesOf('Needs', module).add('Needs', () => (
   <React.Fragment>
     <Light text={text('Label', 'Licht')} icon={3} />
-    <StyleBox h={40} />
+    <StyleBox h={20} />
     <Water text={text('Label2', 'Water')} icon={2} />
   </React.Fragment>
 ))

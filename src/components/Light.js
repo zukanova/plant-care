@@ -39,7 +39,7 @@ export default class Light extends Component {
     return iconsArray
   }
 
-  renderIcons(iconsArray, index) {
+  renderIcons(iconsArray) {
     return iconsArray.map(iconHTML => {
       return iconHTML
     })

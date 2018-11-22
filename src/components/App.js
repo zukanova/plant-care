@@ -31,7 +31,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(CardInfo)
     return (
       <React.Fragment>
         <Header>

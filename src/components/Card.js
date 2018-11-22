@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Light from './Light'
 import Water from './Water'
 
-const Card = styled.div`
+const Card = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 3%;
@@ -54,7 +54,7 @@ export default class CardEl extends Component {
   render() {
     const { title, subtitle, water, light } = this.props
     return (
-      <Card className="Container">
+      <Card>
         <div className="ColumnLeft">
           <img
             className="PlantImage"

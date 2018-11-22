@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import styled from 'styled-components'
-import Need from './Need'
+import Light from './Light'
+import Water from './Water'
 
 const Card = styled.div`
   display: grid;
@@ -29,7 +30,7 @@ const Card = styled.div`
   .ColumnRight {
     display: grid;
     align-self: start;
-    grid-template-rows: 90px 20px 20px;
+    grid-template-rows: 90px 22px 22px;
     grid-gap: 3%;
     padding: 6% 10% 6% 0;
   }
@@ -37,13 +38,13 @@ const Card = styled.div`
   .Head {
     align-self: start;
     font-family: Muli-ExtraBold;
-    font-size: 21px;
+    font-size: 17px;
     color: #030303;
     overflow-y: scroll;
     padding-bottom: 10px;
   }
   .Subhead {
-    font-family: Muli-Regular;
+    font-family: Muli-Italic;
     font-size: 15px;
     color: #030303;
   }
@@ -51,18 +52,23 @@ const Card = styled.div`
 
 export default class Separator extends Component {
   render() {
+    const { title, subtitle, water, light } = this.props
     return (
       <Card className="Container">
         <div className="ColumnLeft">
-          <img className="PlantImage" src="../../images/philodendron.jpg" />
+          <img
+            className="PlantImage"
+            src="../../images/philodendron.jpg"
+            alt=""
+          />
         </div>
         <div className="ColumnRight">
           <div className="Head">
-            Monstera
-            <div className="Subhead">Subhead</div>
+            {this.props.title}
+            <div className="Subhead">{this.props.subtitle}</div>
           </div>
-          <Need />
-          <Need />
+          <Light text="Licht" icon={light} />
+          <Water text="Wasser" icon={water} />
         </div>
       </Card>
     )

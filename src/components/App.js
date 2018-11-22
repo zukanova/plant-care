@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
-import Home from './Home'
 import Card from './Card'
-import Need from './Need'
 // import Config from './Config'
+// import Home from './Home'
+// import Water from './Water'
+// import Light from './Light'
+
+import CardInfo from '../data.js'
 
 const Header = styled.div`
   display: grid;
@@ -14,13 +17,31 @@ const Header = styled.div`
 `
 
 export default class App extends Component {
+  renderAllCards() {
+    return CardInfo.map((item, index) => this.renderNewCard(item, index))
+  }
+
+  renderNewCard(item, index) {
+    const { title, subtitle, light, water } = item
+    return (
+      <Card
+        title={title}
+        subtitle={subtitle}
+        light={light}
+        water={water}
+        key={index}
+      />
+    )
+  }
+
   render() {
+    console.log(CardInfo)
     return (
       <React.Fragment>
         <Header>
-          <img src="../../images/header.svg" />
+          <img src="../../images/header.svg" alt="" />
         </Header>
-        <Card />
+        {this.renderAllCards()}
       </React.Fragment>
     )
   }

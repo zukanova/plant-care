@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from './Card'
-// import Config from './Config'
-// import Home from './Home'
-// import Water from './Water'
-// import Light from './Light'
 
 import CardInfo from '../data.js'
 

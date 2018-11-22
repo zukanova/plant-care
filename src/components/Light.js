@@ -23,29 +23,36 @@ const Amount = styled.section`
   }
 `
 
-export default class Separator extends Component {
+export default class Light extends Component {
   createIconsArray(amount) {
     let iconsArray = []
     for (let i = 0; i < amount; i++) {
       iconsArray.push(
-        <img className="LightIcon" src="../../images/light.svg" alt="" />
+        <img
+          className="LightIcon"
+          src="../../images/light.svg"
+          alt=""
+          key={i}
+        />
       )
     }
     return iconsArray
   }
 
-  renderIcons(iconsArray) {
+  renderIcons(iconsArray, index) {
     return iconsArray.map(iconHTML => {
       return iconHTML
     })
   }
 
   render() {
-    const { text, icon } = this.props
+    const { text, icon, index } = this.props
     return (
       <LightNeed>
         <Indication> {text} </Indication>
-        <Amount>{this.renderIcons(this.createIconsArray(icon))}</Amount>
+        <Amount key={index}>
+          {this.renderIcons(this.createIconsArray(icon))}
+        </Amount>
       </LightNeed>
     )
   }

@@ -1,11 +1,5 @@
 export default [
   {
-    title: 'Goldfruchtpalme',
-    subtitle: 'Areca lutescens',
-    light: '2',
-    water: '3'
-  },
-  {
     title: 'Baumfreund',
     subtitle: 'Philodendron',
     light: '1',
@@ -24,10 +18,22 @@ export default [
     water: '2'
   },
   {
+    title: 'Bogenhanf',
+    subtitle: 'Sansevieria kirkii',
+    light: '1',
+    water: '1'
+  },
+  {
     title: 'Zitronengeranie',
     subtitle: 'Pelargonium citrosum',
     light: '3',
     water: '2'
+  },
+  {
+    title: 'Goldfruchtpalme',
+    subtitle: 'Areca lutescens',
+    light: '2',
+    water: '3'
   },
   {
     title: 'Orchidee',
@@ -45,12 +51,6 @@ export default [
     title: 'Drachenbaum',
     subtitle: 'Dracaena Marginata',
     light: '2',
-    water: '1'
-  },
-  {
-    title: 'Bogenhanf',
-    subtitle: 'Sansevieria kirkii',
-    light: '1',
     water: '1'
   },
   {

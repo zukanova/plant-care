@@ -41,7 +41,7 @@ const Card = styled.div`
     font-size: 17px;
     color: #030303;
     overflow-y: scroll;
-    padding-bottom: 10px;
+    margin-bottom: 50px;
   }
   .Subhead {
     font-family: Muli-Italic;
@@ -50,7 +50,7 @@ const Card = styled.div`
   }
 `
 
-export default class Separator extends Component {
+export default class CardEl extends Component {
   render() {
     const { title, subtitle, water, light } = this.props
     return (
@@ -64,8 +64,8 @@ export default class Separator extends Component {
         </div>
         <div className="ColumnRight">
           <div className="Head">
-            {this.props.title}
-            <div className="Subhead">{this.props.subtitle}</div>
+            {title}
+            <div className="Subhead">{subtitle}</div>
           </div>
           <Light text="Licht" icon={light} />
           <Water text="Wasser" icon={water} />

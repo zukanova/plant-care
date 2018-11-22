@@ -24,12 +24,17 @@ const Amount = styled.section`
   }
 `
 
-export default class Separator extends Component {
+export default class Water extends Component {
   createIconsArray(amount) {
     let iconsArray = []
     for (let i = 0; i < amount; i++) {
       iconsArray.push(
-        <img className="AmountIcon" src="../../images/drop.svg" alt="" />
+        <img
+          className="AmountIcon"
+          src="../../images/drop.svg"
+          alt=""
+          key={i}
+        />
       )
     }
     return iconsArray
@@ -42,11 +47,13 @@ export default class Separator extends Component {
   }
 
   render() {
-    const { text, icon } = this.props
+    const { text, icon, index } = this.props
     return (
       <WaterNeed>
         <Indication> {text} </Indication>
-        <Amount>{this.renderIcons(this.createIconsArray(icon))}</Amount>
+        <Amount key={index}>
+          {this.renderIcons(this.createIconsArray(icon))}
+        </Amount>
       </WaterNeed>
     )
   }

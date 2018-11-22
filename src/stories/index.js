@@ -12,14 +12,19 @@ import Water from '../components/Water'
 
 storiesOf('Card', module).add('card', () => (
   <React.Fragment>
-    <Card>{text('Label', 'Hello world')}</Card>
+    <Card
+      title={text('Card: text', 'Monstera')}
+      subtitle={text('Card: text', 'Monstera deliciosa')}
+      light={3}
+      water={2}
+    />
   </React.Fragment>
 ))
 
 storiesOf('Needs', module).add('Needs', () => (
   <React.Fragment>
-    <Light text={text('Label', 'Licht')} />
+    <Light text={text('Label', 'Licht')} icon={3} />
     <StyleBox h={40} />
-    <Water>text={text('Label2', 'Water')}</Water>
+    <Water text={text('Label2', 'Water')} icon={2} />
   </React.Fragment>
 ))

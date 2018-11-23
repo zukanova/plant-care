@@ -67,8 +67,8 @@ export default class CardEl extends Component {
             {title}
             <div className="Subhead">{subtitle}</div>
           </div>
-          <Light text="Licht" icon={light} />
-          <Water text="Wasser" icon={water} />
+          <Light text="Light" icon={light} />
+          <Water text="Water" icon={water} />
         </div>
       </Card>
     )

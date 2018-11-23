@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -9,7 +10,8 @@ const WaterNeed = styled.section`
 `
 
 const Indication = styled.section`
-  font-family: Muli-SemiBold;
+  font-family: 'Muli';
+  font-weight: 400;
   font-size: 15px;
   color: #64a61b;
   align-self: center;
@@ -25,6 +27,11 @@ const Amount = styled.section`
 `
 
 export default class Water extends Component {
+  static propTypes = {
+    text: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
+  }
+
   createIconsArray(amount) {
     let iconsArray = []
     for (let i = 0; i < amount; i++) {
@@ -47,13 +54,11 @@ export default class Water extends Component {
   }
 
   render() {
-    const { text, icon, index } = this.props
+    const { text, icon } = this.props
     return (
       <WaterNeed>
         <Indication> {text} </Indication>
-        <Amount key={index}>
-          {this.renderIcons(this.createIconsArray(icon))}
-        </Amount>
+        <Amount>{this.renderIcons(this.createIconsArray(icon))}</Amount>
       </WaterNeed>
     )
   }

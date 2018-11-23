@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 import Light from './Light'
@@ -11,7 +12,7 @@ const Card = styled.section`
   margin: 7%;
   background-color: white;
   height: 20%;
-  font-family: Muli;
+  font-family: 'Muli';
   border: 1px solid #dcdcdc;
   box-shadow: 0 2px 6px 0 rgba(196, 196, 196, 0.5);
 
@@ -37,24 +38,34 @@ const Card = styled.section`
 
   .Head {
     align-self: start;
-    font-family: Muli-ExtraBold;
+    font-family: 'Muli';
+    font-weight: 800;
     font-size: 17px;
     color: #030303;
     overflow-y: scroll;
     margin-bottom: 50px;
   }
   .Subhead {
-    font-family: Muli-Italic;
+    font-family: 'Muli';
+    font-weight: 400;
+    font-style: italic;
     font-size: 15px;
     color: #030303;
   }
 `
 
 export default class CardEl extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    water: PropTypes.string.isRequired,
+    light: PropTypes.string.isRequired
+  }
+
   render() {
     const { title, subtitle, water, light } = this.props
     return (
-      <Card>
+      <Card data-cy="CardEl">
         <div className="ColumnLeft">
           <img
             className="PlantImage"

@@ -7,8 +7,7 @@ import { text, boolean, number } from '@storybook/addon-knobs'
 import StyleBox from './StyleBox'
 
 import Card from '../components/Card'
-import Light from '../components/Light'
-import Water from '../components/Water'
+import IconRange from '../components/IconRange'
 import Form from '../components/Form'
 
 storiesOf('Card', module).add('card', () => (
@@ -22,11 +21,9 @@ storiesOf('Card', module).add('card', () => (
   </React.Fragment>
 ))
 
-storiesOf('Needs', module).add('Needs', () => (
+storiesOf('IconRange', module).add('IconRange', () => (
   <React.Fragment>
-    <Light text={text('Label', 'Light')} icon={3} />
-    <StyleBox h={20} />
-    <Water text={text('Label2', 'Water')} icon={2} />
+    <IconRange text={text('Label', 'Water')} icon={3} />
   </React.Fragment>
 ))
 

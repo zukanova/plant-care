@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 import IconRange from './IconRange'
-
 import exampleSrc from '../images/philodendron.jpg'
+
 const Card = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;

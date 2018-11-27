@@ -2,61 +2,61 @@ export default [
   {
     title: 'Baumfreund',
     subtitle: 'Philodendron',
-    light: '1',
-    water: '2'
+    lightAmount: '1',
+    waterAmount: '2'
   },
   {
     title: 'Ficus Alii',
     subtitle: 'Ficus Alii',
-    light: '3',
-    water: '3'
+    lightAmount: '3',
+    waterAmount: '3'
   },
   {
     title: 'Monstera',
     subtitle: 'Monstera deliciosa',
-    light: '2',
-    water: '2'
+    lightAmount: '2',
+    waterAmount: '2'
   },
   {
     title: 'Bogenhanf',
     subtitle: 'Sansevieria kirkii',
-    light: '1',
-    water: '1'
+    lightAmount: '1',
+    waterAmount: '1'
   },
   {
     title: 'Zitronengeranie',
     subtitle: 'Pelargonium citrosum',
-    light: '3',
-    water: '2'
+    lightAmount: '3',
+    waterAmount: '2'
   },
   {
     title: 'Goldfruchtpalme',
     subtitle: 'Areca lutescens',
-    light: '2',
-    water: '3'
+    lightAmount: '2',
+    waterAmount: '3'
   },
   {
     title: 'Orchidee',
     subtitle: 'Phalaenopsis denver',
-    light: '3',
-    water: '2'
+    lightAmount: '3',
+    waterAmount: '2'
   },
   {
     title: 'Korallenkaktus',
     subtitle: 'Rhipsalis pulchra',
-    light: '2',
-    water: '2'
+    lightAmount: '2',
+    waterAmount: '2'
   },
   {
     title: 'Drachenbaum',
     subtitle: 'Dracaena Marginata',
-    light: '2',
-    water: '1'
+    lightAmount: '2',
+    waterAmount: '1'
   },
   {
     title: 'Aloe vera',
     subtitle: 'Aloe vera',
-    light: '3',
-    water: '1'
+    lightAmount: '3',
+    waterAmount: '1'
   }
 ]

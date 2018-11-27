@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import Light from './Light'
-import Water from './Water'
+import IconRange from './IconRange'
 
+import exampleSrc from '../images/philodendron.jpg'
 const Card = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,23 +63,19 @@ export default class CardEl extends Component {
   }
 
   render() {
-    const { title, subtitle, water, light } = this.props
+    const { title, subtitle, light, water } = this.props
     return (
       <Card data-cy="CardEl">
         <div className="ColumnLeft">
-          <img
-            className="PlantImage"
-            src="../../images/philodendron.jpg"
-            alt=""
-          />
+          <img className="PlantImage" src={exampleSrc} alt="" />
         </div>
         <div className="ColumnRight">
           <div className="Head">
             {title}
             <div className="Subhead">{subtitle}</div>
           </div>
-          <Light text="Light" icon={light} />
-          <Water text="Water" icon={water} />
+          <IconRange text="Light" icon={'light'} amount={light} />
+          <IconRange text="Water" icon={'drop'} amount={water} />
         </div>
       </Card>
     )

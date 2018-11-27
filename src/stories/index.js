@@ -9,6 +9,7 @@ import StyleBox from './StyleBox'
 import Card from '../components/Card'
 import Light from '../components/Light'
 import Water from '../components/Water'
+import Form from '../components/Form'
 
 storiesOf('Card', module).add('card', () => (
   <React.Fragment>
@@ -26,5 +27,11 @@ storiesOf('Needs', module).add('Needs', () => (
     <Light text={text('Label', 'Light')} icon={3} />
     <StyleBox h={20} />
     <Water text={text('Label2', 'Water')} icon={2} />
+  </React.Fragment>
+))
+
+storiesOf('FormEl', module).add('form', () => (
+  <React.Fragment>
+    <Form />
   </React.Fragment>
 ))

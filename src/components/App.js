@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from './Card'
 
+import headerSrc from '../images/header.svg'
 import CardInfo from '../data.js'
 
 const Header = styled.div`
@@ -18,13 +19,13 @@ export default class App extends Component {
   }
 
   renderNewCard(item, index) {
-    const { title, subtitle, light, water } = item
+    const { title, subtitle, lightAmount, waterAmount } = item
     return (
       <Card
         title={title}
         subtitle={subtitle}
-        light={light}
-        water={water}
+        light={lightAmount}
+        water={waterAmount}
         key={index}
       />
     )
@@ -34,7 +35,7 @@ export default class App extends Component {
     return (
       <React.Fragment>
         <Header>
-          <img src="../../images/header.svg" alt="" />
+          <img src={headerSrc} alt="" />
         </Header>
         {this.renderAllCards()}
       </React.Fragment>

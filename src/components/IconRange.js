@@ -13,7 +13,8 @@ const LightNeed = styled.section`
 const Indication = styled.section`
   font-family: 'Muli';
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
+
   color: #64a61b;
   align-self: center;
 `

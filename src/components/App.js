@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from './Card'
+import Form from './Form'
 
 import headerSrc from '../images/header.svg'
 import CardInfo from '../data.js'
@@ -37,6 +38,7 @@ export default class App extends Component {
         <Header>
           <img src={headerSrc} alt="" />
         </Header>
+        <Form />
         {this.renderAllCards()}
       </React.Fragment>
     )

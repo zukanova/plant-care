@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import IconRange from './IconRange'
-import openIconSrc from '../images/openIcon.svg'
+import addIconSrc from '../images/AddIcon.svg'
 
 import styled from 'styled-components'
+// import { timingSafeEqual } from 'crypto'
 
 const Form = styled.section`
-  display: grid;
-  grid-template-rows: 1fr 1.9fr 1.9fr 3fr;
-  grid-gap: 3%;
+  display: flex;
+  flex-direction: column;
   margin: 7%;
   padding: 2.5%;
   height: 30%;
@@ -23,12 +23,32 @@ const Form = styled.section`
   .FormTitle {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
   }
 
   .OpenIcon {
     transform: rotate(180deg);
   }
+
+  .hidden {
+    overflow: hidden;
+    height: 0;
+  }
+
+  .visible {
+    transition: all 1s ease;
+    /* height: 79%; */
+  }
+
+  .disabled {
+    opacity: 0.4;
+  }
+`
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 40px 40px 60px;
+  grid-gap: 4%;
 
   input {
     border-radius: 7px;
@@ -36,6 +56,7 @@ const Form = styled.section`
     border-top: 0px;
     border-left: 0px solid #64a61b;
     border-right: 0px solid #64a61b;
+    padding: 2.5%;
     font-family: 'Muli';
     font-weight: 400;
     font-size: 12px;
@@ -45,10 +66,17 @@ const Form = styled.section`
     align-self: center;
   }
 
+  ::placeholder {
+    color: F5F5F5;
+  }
+`
+const Below = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   .ColumnRight {
     align-self: center;
   }
-
   .AddButton {
     background: #64a61b;
     border-radius: 2px;
@@ -61,14 +89,14 @@ const Form = styled.section`
     letter-spacing: 0.5px;
     color: white;
   }
-`
-const Below = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`
 
-const Light = styled.section``
-const Water = styled.section``
+  .ColumnLeft {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    /* justify-content: space-between;
+    align-items: bottom; */
+  }
+`
 
 export default class FormEl extends Component {
   static propTypes = {
@@ -77,28 +105,45 @@ export default class FormEl extends Component {
     // amount: PropTypes.number.isRequired
   }
 
+  state = {
+    showCard: false
+  }
+
+  toggleCard = () => {
+    console.log('toggleCard')
+    this.setState({ showCard: !this.state.showCard })
+  }
+
   render() {
     return (
       <Form>
         <div className="FormTitle">
-          ADD YOUR PLANTS HERE{' '}
-          <img className="OpenIcon" src={openIconSrc} alt="" />
+          ADD YOUR PLANTS HERE
+          <img
+            onClick={() => this.toggleCard()}
+            className="OpenIcon"
+            src={addIconSrc}
+            alt=""
+          />
         </div>
-        <input type="text" id="Head" placeholder=" Plantname" />
-        <input type="text" id="Subhead" placeholder=" Description" />
-        <Below>
-          <div className="ColumnRight">
-            <button className="AddButton">ADD A PLANT</button>
-          </div>
-          <div className="ColumnLeft">
-            <Light>
-              <IconRange />
-            </Light>
-            <Water>
-              <IconRange />
-            </Water>
-          </div>
-        </Below>
+
+        <Wrapper className={this.state.showCard ? 'visible' : 'hidden'}>
+          <input type="text" id="Head" placeholder="Plantname" />
+          <input type="text" id="Subhead" placeholder="Description" />
+          <Below>
+            <div className="ColumnRight">
+              <button className="AddButton">ADD A PLANT</button>
+            </div>
+            <div className="ColumnLeft">
+              <section>
+                <IconRange />
+              </section>
+              <section>
+                <IconRange />
+              </section>
+            </div>
+          </Below>
+        </Wrapper>
       </Form>
     )
   }

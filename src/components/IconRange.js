@@ -4,7 +4,7 @@ import lightSrc from '../images/light.svg'
 import dropSrc from '../images/drop.svg'
 import styled from 'styled-components'
 
-const LightNeed = styled.section`
+const Need = styled.section`
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -38,9 +38,9 @@ const Amount = styled.section`
 
 export default class IconRange extends Component {
   static propTypes = {
-    text: PropTypes.string.isRequired,
-    icon: PropTypes.oneOf(['light', 'drop']).isRequired,
-    amount: PropTypes.number.isRequired
+    text: PropTypes.string,
+    icon: PropTypes.oneOf(['light', 'drop']),
+    amount: PropTypes.number
   }
 
   static defaultProps = {}
@@ -70,12 +70,12 @@ export default class IconRange extends Component {
   render() {
     const { text, icon, amount } = this.props
     return (
-      <LightNeed>
+      <Need>
         <Indication> {text} </Indication>
         <Amount icon={icon}>
           {this.renderIcons(this.createIconsArray(amount, icon))}
         </Amount>
-      </LightNeed>
+      </Need>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import IconRange from './IconRange'
 import addIconSrc from '../images/AddIcon.svg'
+// import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 // import { timingSafeEqual } from 'crypto'
@@ -106,11 +106,16 @@ export default class FormEl extends Component {
   }
 
   state = {
-    showCard: false
+    showCard: false,
+    newCard: {
+      title: '',
+      subtitle: '',
+      lightAmount: 0,
+      waterAmount: 0
+    }
   }
 
   toggleCard = () => {
-    console.log('toggleCard')
     this.setState({ showCard: !this.state.showCard })
   }
 
@@ -128,18 +133,53 @@ export default class FormEl extends Component {
         </div>
 
         <Wrapper className={this.state.showCard ? 'visible' : 'hidden'}>
-          <input type="text" id="Head" placeholder="Plantname" />
-          <input type="text" id="Subhead" placeholder="Description" />
+          <input
+            type="text"
+            placeholder="Plantname"
+            onChange={event => {
+              this.setState({
+                newCard: { ...this.state.newCard, title: event.target.value }
+              })
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            onChange={event => {
+              this.setState({
+                newCard: { ...this.state.newCard, subtitle: event.target.value }
+              })
+            }}
+          />
           <Below>
             <div className="ColumnRight">
-              <button className="AddButton">ADD A PLANT</button>
+              <button
+                className="AddButton"
+                onClick={() => this.props.createCard(this.state.newCard)}
+              >
+                ADD A PLANT
+              </button>
             </div>
             <div className="ColumnLeft">
               <section>
-                <IconRange />
+                <IconRange
+                  text="Light"
+                  icon="light"
+                  amount={this.state.lightAmount}
+                  onSelectAmount={amount =>
+                    this.setState({ lightAmount: amount })
+                  }
+                />
               </section>
               <section>
-                <IconRange />
+                <IconRange
+                  text="Water"
+                  icon="drop"
+                  amount={this.state.waterAmount}
+                  onSelectAmount={amount =>
+                    this.setState({ waterAmount: amount })
+                  }
+                />
               </section>
             </div>
           </Below>

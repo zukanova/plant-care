@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from './Card'
 import Form from './Form'
 
@@ -15,8 +15,19 @@ const Header = styled.div`
 `
 
 export default class App extends Component {
+  state = {
+    plants: CardInfo
+  }
+
+  createCard(newCard) {
+    console.log(this.state.plants)
+    this.setState({ plants: [newCard, ...this.state.plants] })
+  }
+
   renderAllCards() {
-    return CardInfo.map((item, index) => this.renderNewCard(item, index))
+    return this.state.plants.map((item, index) =>
+      this.renderNewCard(item, index)
+    )
   }
 
   renderNewCard(item, index) {
@@ -38,7 +49,7 @@ export default class App extends Component {
         <Header>
           <img src={headerSrc} alt="" />
         </Header>
-        <Form />
+        <Form createCard={newCard => this.createCard(newCard)} />
         {this.renderAllCards()}
       </React.Fragment>
     )

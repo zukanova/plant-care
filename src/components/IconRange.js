@@ -20,6 +20,8 @@ const Indication = styled.section`
 `
 
 const Amount = styled.section`
+  /* display: flex;
+  flex-direction: row-reverse; */
   align-self: center;
 
   .light {
@@ -52,6 +54,7 @@ export default class IconRange extends Component {
       const isDisabled = index + 1 <= total - amount
       return (
         <img
+          onClick={() => this.props.onSelectAmount(index + 1)}
           className={isDisabled ? icon + ' disabled' : icon}
           src={src}
           alt=""

@@ -36,7 +36,7 @@ const Card = styled.section`
     padding: 6% 10% 6% 0;
   }
 
-  .Head {
+  .Title {
     align-self: start;
     font-family: 'Muli';
     font-weight: 800;
@@ -45,7 +45,7 @@ const Card = styled.section`
     overflow-y: scroll;
     margin-bottom: 50px;
   }
-  .Subhead {
+  .Subtitle {
     font-family: 'Muli';
     font-weight: 400;
     font-style: italic;
@@ -58,8 +58,8 @@ export default class CardEl extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    water: PropTypes.string.isRequired,
-    light: PropTypes.string.isRequired
+    water: PropTypes.number.isRequired,
+    light: PropTypes.number.isRequired
   }
 
   render() {
@@ -70,9 +70,9 @@ export default class CardEl extends Component {
           <img className="PlantImage" src={exampleSrc} alt="" />
         </div>
         <div className="ColumnRight">
-          <div className="Head">
+          <div className="Title">
             {title}
-            <div className="Subhead">{subtitle}</div>
+            <div className="Subtitle">{subtitle}</div>
           </div>
           <IconRange text="Light" icon={'light'} amount={light} />
           <IconRange text="Water" icon={'drop'} amount={water} />

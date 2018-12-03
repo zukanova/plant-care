@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import IconRange from './IconRange'
 import addIconSrc from '../images/AddIcon.svg'
-// import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-// import { timingSafeEqual } from 'crypto'
 
 const Form = styled.section`
   display: flex;
@@ -27,7 +25,6 @@ const Form = styled.section`
   }
 
   .OpenIcon {
-    transform: rotate(180deg);
   }
 
   .hidden {
@@ -37,7 +34,6 @@ const Form = styled.section`
 
   .visible {
     transition: all 1s ease;
-    /* height: 79%; */
   }
 
   .disabled {
@@ -48,15 +44,15 @@ const Form = styled.section`
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 40px 40px 60px;
-  grid-gap: 4%;
+  grid-gap: 4px;
 
   input {
     border-radius: 7px;
     border: 1px solid #64a61b;
-    border-top: 0px;
-    border-left: 0px solid #64a61b;
-    border-right: 0px solid #64a61b;
-    padding: 2.5%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 8px;
     font-family: 'Muli';
     font-weight: 400;
     font-size: 12px;
@@ -66,6 +62,10 @@ const Wrapper = styled.div`
     align-self: center;
   }
 
+  input:focus {
+    outline: 1px solid gainsboro;
+  }
+
   ::placeholder {
     color: F5F5F5;
   }
@@ -73,16 +73,19 @@ const Wrapper = styled.div`
 const Below = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 7px;
 
-  .ColumnRight {
-    align-self: center;
+  .ColumnLeft {
+    padding-top: 28px;
   }
   .AddButton {
     background: #64a61b;
+    border: 0px;
     border-radius: 2px;
     width: 98%;
     height: 23px;
-    box-shadow: 0 2px 4px 0 rgba(127, 126, 126, 0.4);
+    box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.2);
     font-family: 'Muli';
     font-weight: 600;
     font-size: 12px;
@@ -90,21 +93,21 @@ const Below = styled.div`
     color: white;
   }
 
-  .ColumnLeft {
+  button:hover {
+    background: #487713;
+    /* color: #3a7999; */
+    box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.5);
+  }
+
+  .ColumnRight {
     display: grid;
     grid-template-rows: 50% 50%;
-    /* justify-content: space-between;
-    align-items: bottom; */
+    grid-gap: 4px;
+    align-items: center;
   }
 `
 
 export default class FormEl extends Component {
-  static propTypes = {
-    // text: PropTypes.string.isRequired,
-    // icon: PropTypes.oneOf(['light', 'drop']).isRequired,
-    // amount: PropTypes.number.isRequired
-  }
-
   state = {
     showCard: false,
     newCard: {
@@ -119,6 +122,14 @@ export default class FormEl extends Component {
     this.setState({ showCard: !this.state.showCard })
   }
 
+  selectLight = amount => {
+    this.setState({ newCard: { ...this.state.newCard, lightAmount: amount } })
+  }
+
+  selectWater = amount => {
+    this.setState({ newCard: { ...this.state.newCard, waterAmount: amount } })
+  }
+
   render() {
     return (
       <Form>
@@ -126,7 +137,11 @@ export default class FormEl extends Component {
           ADD YOUR PLANTS HERE
           <img
             onClick={() => this.toggleCard()}
-            className="OpenIcon"
+            className={
+              this.state.showCard
+                ? this.toggleCard + ' disabled'
+                : this.toggleCard
+            }
             src={addIconSrc}
             alt=""
           />
@@ -152,7 +167,7 @@ export default class FormEl extends Component {
             }}
           />
           <Below>
-            <div className="ColumnRight">
+            <div className="ColumnLeft">
               <button
                 className="AddButton"
                 onClick={() => this.props.createCard(this.state.newCard)}
@@ -160,25 +175,21 @@ export default class FormEl extends Component {
                 ADD A PLANT
               </button>
             </div>
-            <div className="ColumnLeft">
+            <div className="ColumnRight">
               <section>
                 <IconRange
                   text="Light"
                   icon="light"
-                  amount={this.state.lightAmount}
-                  onSelectAmount={amount =>
-                    this.setState({ lightAmount: amount })
-                  }
+                  amount={this.state.newCard.lightAmount}
+                  onSelectAmount={this.selectLight}
                 />
               </section>
               <section>
                 <IconRange
                   text="Water"
                   icon="drop"
-                  amount={this.state.waterAmount}
-                  onSelectAmount={amount =>
-                    this.setState({ waterAmount: amount })
-                  }
+                  amount={this.state.newCard.waterAmount}
+                  onSelectAmount={this.selectWater}
                 />
               </section>
             </div>

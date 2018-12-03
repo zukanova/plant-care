@@ -50,11 +50,12 @@ export default class IconRange extends Component {
   createIconsArray(amount, icon) {
     const src = icon === 'light' ? lightSrc : dropSrc
     const total = 3
+    console.log('amount', amount)
     return new Array(total).fill().map((_, index) => {
       const isDisabled = index + 1 <= total - amount
       return (
         <img
-          onClick={() => this.props.onSelectAmount(index + 1)}
+          onClick={() => this.props.onSelectAmount(total - index)}
           className={isDisabled ? icon + ' disabled' : icon}
           src={src}
           alt=""

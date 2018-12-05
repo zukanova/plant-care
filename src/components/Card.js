@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 import IconRange from './IconRange'
-import exampleSrc from '../images/philodendron.jpg'
 
 const Card = styled.section`
   display: grid;
@@ -26,6 +25,7 @@ const Card = styled.section`
     height: 140px;
     width: 140px;
     object-fit: cover;
+    background-color: #a4da8f;
   }
 
   .ColumnRight {
@@ -63,11 +63,11 @@ export default class CardEl extends Component {
   }
 
   render() {
-    const { title, subtitle, light, water } = this.props
+    const { title, subtitle, light, water, img } = this.props
     return (
       <Card data-cy="CardEl">
         <div className="ColumnLeft">
-          <img className="PlantImage" src={exampleSrc} alt="" />
+          <img className="PlantImage" src={img} alt="" />
         </div>
         <div className="ColumnRight">
           <div className="Title">

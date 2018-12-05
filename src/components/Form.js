@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import IconRange from './IconRange'
 import addIconSrc from '../images/AddIcon.svg'
+// import exampleSrc from '../images/placeholderplant.jpg'
 
 import styled from 'styled-components'
 
@@ -18,13 +19,16 @@ const Form = styled.section`
   border: 1px solid #dcdcdc;
   box-shadow: 0 2px 6px 0 rgba(196, 196, 196, 0.5);
 
-  .FormTitle {
+  .formTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .OpenIcon {
+  .openIcon {
+    opacity: 0.4;
+    transition: all 0.7s ease;
+    transform: rotate(45deg);
   }
 
   .hidden {
@@ -38,6 +42,8 @@ const Form = styled.section`
 
   .disabled {
     opacity: 0.4;
+    /* transition: all 0.5s ease;
+    transform: rotate(45deg); */
   }
 `
 
@@ -64,6 +70,7 @@ const Wrapper = styled.div`
 
   input:focus {
     outline: 1px solid gainsboro;
+    transform: rotate (45deg);
   }
 
   ::placeholder {
@@ -76,10 +83,10 @@ const Below = styled.div`
   grid-gap: 5px;
   margin-top: 7px;
 
-  .ColumnLeft {
+  .columnLeft {
     padding-top: 28px;
   }
-  .AddButton {
+  .addButton {
     background: #64a61b;
     border: 0px;
     border-radius: 2px;
@@ -99,7 +106,7 @@ const Below = styled.div`
     box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.5);
   }
 
-  .ColumnRight {
+  .columnRight {
     display: grid;
     grid-template-rows: 50% 50%;
     grid-gap: 4px;
@@ -118,6 +125,9 @@ export default class FormEl extends Component {
     }
   }
 
+  nameInputRef = React.createRef()
+  descriptionInputRef = React.createRef()
+
   toggleCard = () => {
     this.setState({ showCard: !this.state.showCard })
   }
@@ -130,18 +140,22 @@ export default class FormEl extends Component {
     this.setState({ newCard: { ...this.state.newCard, waterAmount: amount } })
   }
 
+  resetInput = event => {
+    const nameInput = this.nameInputRef.current
+    const descriptionInput = this.descriptionInputRef.current
+    nameInput.value = ''
+    descriptionInput.value = ''
+    nameInput.focus()
+  }
+
   render() {
     return (
       <Form>
-        <div className="FormTitle">
+        <div className="formTitle">
           ADD YOUR PLANTS HERE
           <img
             onClick={() => this.toggleCard()}
-            className={
-              this.state.showCard
-                ? this.toggleCard + ' disabled'
-                : this.toggleCard
-            }
+            className={this.state.showCard ? 'openIcon' : ''}
             src={addIconSrc}
             alt=""
           />
@@ -151,6 +165,7 @@ export default class FormEl extends Component {
           <input
             type="text"
             placeholder="Plantname"
+            ref={this.nameInputRef}
             onChange={event => {
               this.setState({
                 newCard: { ...this.state.newCard, title: event.target.value }
@@ -160,6 +175,7 @@ export default class FormEl extends Component {
           <input
             type="text"
             placeholder="Description"
+            ref={this.descriptionInputRef}
             onChange={event => {
               this.setState({
                 newCard: { ...this.state.newCard, subtitle: event.target.value }
@@ -167,15 +183,18 @@ export default class FormEl extends Component {
             }}
           />
           <Below>
-            <div className="ColumnLeft">
+            <div className="columnLeft">
               <button
-                className="AddButton"
-                onClick={() => this.props.createCard(this.state.newCard)}
+                className="addButton"
+                onClick={event => {
+                  this.props.createCard(this.state.newCard)
+                  this.resetInput(event)
+                }}
               >
                 ADD A PLANT
               </button>
             </div>
-            <div className="ColumnRight">
+            <div className="columnRight">
               <section>
                 <IconRange
                   text="Light"

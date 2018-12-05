@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import IconRange from './IconRange'
+import Light from './Light'
+import Water from './Water'
 
 const Card = styled.section`
   display: grid;
@@ -25,7 +26,6 @@ const Card = styled.section`
     height: 140px;
     width: 140px;
     object-fit: cover;
-    background-color: #a4da8f;
   }
 
   .ColumnRight {
@@ -36,7 +36,7 @@ const Card = styled.section`
     padding: 6% 10% 6% 0;
   }
 
-  .Title {
+  .Head {
     align-self: start;
     font-family: 'Muli';
     font-weight: 800;
@@ -45,7 +45,7 @@ const Card = styled.section`
     overflow-y: scroll;
     margin-bottom: 50px;
   }
-  .Subtitle {
+  .Subhead {
     font-family: 'Muli';
     font-weight: 400;
     font-style: italic;
@@ -58,24 +58,28 @@ export default class CardEl extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    water: PropTypes.number.isRequired,
-    light: PropTypes.number.isRequired
+    water: PropTypes.string.isRequired,
+    light: PropTypes.string.isRequired
   }
 
   render() {
-    const { title, subtitle, light, water, img } = this.props
+    const { title, subtitle, water, light } = this.props
     return (
       <Card data-cy="CardEl">
         <div className="ColumnLeft">
-          <img className="PlantImage" src={img} alt="" />
+          <img
+            className="PlantImage"
+            src="../../images/philodendron.jpg"
+            alt=""
+          />
         </div>
         <div className="ColumnRight">
-          <div className="Title">
+          <div className="Head">
             {title}
-            <div className="Subtitle">{subtitle}</div>
+            <div className="Subhead">{subtitle}</div>
           </div>
-          <IconRange text="Light" icon={'light'} amount={light} />
-          <IconRange text="Water" icon={'drop'} amount={water} />
+          <Light text="Light" icon={light} />
+          <Water text="Water" icon={water} />
         </div>
       </Card>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import lightSrc from '/images/light.svg'
-import dropSrc from '/images/drop.svg'
+import lightSrc from '../images/light.svg'
+import dropSrc from '../images/drop.svg'
 import styled from 'styled-components'
 
 const Need = styled.section`
@@ -20,8 +20,6 @@ const Indication = styled.section`
 `
 
 const Amount = styled.section`
-  /* display: flex;
-  flex-direction: row-reverse; */
   align-self: center;
 
   .light {
@@ -47,15 +45,18 @@ export default class IconRange extends Component {
 
   static defaultProps = {}
 
+  handleClick(total, index) {
+    this.props.onSelectAmount && this.props.onSelectAmount(total - index)
+  }
+
   createIconsArray(amount, icon) {
     const src = icon === 'light' ? lightSrc : dropSrc
     const total = 3
-    console.log('amount', amount)
     return new Array(total).fill().map((_, index) => {
       const isDisabled = index + 1 <= total - amount
       return (
         <img
-          onClick={() => this.props.onSelectAmount(total - index)}
+          onClick={() => this.handleClick(total, index)}
           className={isDisabled ? icon + ' disabled' : icon}
           src={src}
           alt=""

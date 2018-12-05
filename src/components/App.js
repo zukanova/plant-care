@@ -6,10 +6,6 @@ import Form from './Form'
 
 import headerSrc from '/images/header.svg'
 import CardInfo from '../data.js'
-<<<<<<< HEAD
-// import data from '../data.js'
-=======
->>>>>>> parent of 77cff0e... Add pictures and local storage
 
 const Header = styled.div`
   display: grid;

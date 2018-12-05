@@ -2,13 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-<<<<<<< HEAD
-import Light from './Light'
-import Water from './Water'
-=======
 import IconRange from './IconRange'
 import exampleSrc from '../images/philodendron.jpg'
->>>>>>> parent of 77cff0e... Add pictures and local storage
 
 const Card = styled.section`
   display: grid;
@@ -68,31 +63,17 @@ export default class CardEl extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    const { title, subtitle, water, light } = this.props
-    return (
-      <Card data-cy="CardEl">
-        <div className="ColumnLeft">
-          <img
-            className="PlantImage"
-            src="../../images/philodendron.jpg"
-            alt=""
-          />
-=======
     const { title, subtitle, light, water } = this.props
     return (
       <Card data-cy="CardEl">
         <div className="ColumnLeft">
           <img className="PlantImage" src={exampleSrc} alt="" />
->>>>>>> parent of 77cff0e... Add pictures and local storage
         </div>
         <div className="ColumnRight">
           <div className="Head">
             {title}
             <div className="Subhead">{subtitle}</div>
           </div>
-          <Light text="Light" icon={light} />
-          <Water text="Water" icon={water} />
         </div>
       </Card>
     )

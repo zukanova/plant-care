@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import IconRange from './IconRange'
-import addIconSrc from '../images/AddIcon.svg'
+import addIconSrc from '../images/addIcon.svg'
 // import exampleSrc from '../images/placeholderplant.jpg'
 
 import styled from 'styled-components'

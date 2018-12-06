@@ -6,7 +6,6 @@ import Form from './Form'
 
 import headerSrc from '../images/header.svg'
 import CardInfo from '../data.js'
-import data from '../data.js'
 
 const Header = styled.div`
   display: grid;

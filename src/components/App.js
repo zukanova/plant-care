@@ -1,78 +1,48 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
-import Card from './Card'
-import Form from './Form'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import HomeScreen from './screens/HomeScreen'
+import UserScreen from './screens/UserScreen'
+import Navigation from './Navigation'
 
-import headerSrc from '../images/header.svg'
-import CardInfo from '../data.js'
-
-const Header = styled.div`
+const Wrapper = styled.section`
   display: grid;
-  justify-content: center;
-  padding-top: 5%;
-  height: 10%;
+  grid-template-rows: auto 50px;
+  height: 100vh;
 `
 
 export default class App extends Component {
   state = {
-    plants: this.load()
+    showAllCards: true
   }
 
-  save() {
-    localStorage.setItem(
-      'Plant-Care-App--plants',
-      JSON.stringify(this.state.plants)
-    )
-  }
-
-  load() {
-    try {
-      return (
-        JSON.parse(localStorage.getItem('Plant-Care-App--plants')) || CardInfo
-      )
-    } catch (err) {
-      return CardInfo
-    }
-  }
-
-  componentDidUpdate() {
-    this.save()
-  }
-
-  createCard(newCard) {
-    this.setState({ plants: [newCard, ...this.state.plants] })
-  }
-
-  renderAllCards() {
-    return this.state.plants.map((item, index) =>
-      this.renderNewCard(item, index)
-    )
-  }
-
-  renderNewCard(item, index) {
-    const { title, subtitle, lightAmount, waterAmount, img } = item
-    return (
-      <Card
-        title={title}
-        subtitle={subtitle}
-        light={lightAmount}
-        water={waterAmount}
-        key={index}
-        img={img}
-      />
-    )
-  }
+  // toggleShowAllCards = () => {
+  //   this.setState({
+  //     showAllCards: !this.state.showAllCards
+  //   })
+  // }
 
   render() {
     return (
-      <React.Fragment>
-        <Header>
-          <img src={headerSrc} alt="" />
-        </Header>
-        <Form createCard={newCard => this.createCard(newCard)} />
-        {this.renderAllCards()}
-      </React.Fragment>
+      <Router>
+        <Wrapper>
+          <Route
+            exact
+            path="/"
+            render={() => <HomeScreen showAllCards={this.state.showAllCards} />}
+          />
+          <Route
+            path="/user"
+            render={() => (
+              <UserScreen
+                showAllCards={this.state.showAllCards}
+                onToggle={this.toggleShowAllCards}
+              />
+            )}
+          />
+          <Navigation />
+        </Wrapper>
+      </Router>
     )
   }
 }

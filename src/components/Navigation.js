@@ -20,8 +20,7 @@ const Wrapper = styled.nav`
     }
 
     &.active {
-      background: deeppink;
-      color: white;
+      color: #64a61b;
     }
   }
 `
@@ -31,7 +30,7 @@ export default props => (
     <NavLink exact activeClassName="active" to="/">
       Home
     </NavLink>
-    <NavLink activeClassName="active" to="/config">
+    <NavLink activeClassName="active" to="/user">
       User
     </NavLink>
   </Wrapper>

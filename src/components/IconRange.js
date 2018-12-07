@@ -20,6 +20,8 @@ const Indication = styled.section`
 `
 
 const Amount = styled.section`
+  /* display: flex;
+  flex-direction: row-reverse; */
   align-self: center;
 
   .light {

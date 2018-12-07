@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 import IconRange from './IconRange'
-import exampleSrc from '../images/philodendron.jpg'
 
 const Card = styled.section`
   display: grid;
@@ -26,6 +25,7 @@ const Card = styled.section`
     height: 140px;
     width: 140px;
     object-fit: cover;
+    background-color: #a4da8f;
   }
 
   .ColumnRight {
@@ -36,7 +36,7 @@ const Card = styled.section`
     padding: 6% 10% 6% 0;
   }
 
-  .Head {
+  .Title {
     align-self: start;
     font-family: 'Muli';
     font-weight: 800;
@@ -45,7 +45,7 @@ const Card = styled.section`
     overflow-y: scroll;
     margin-bottom: 50px;
   }
-  .Subhead {
+  .Subtitle {
     font-family: 'Muli';
     font-weight: 400;
     font-style: italic;
@@ -58,22 +58,24 @@ export default class CardEl extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    water: PropTypes.string.isRequired,
-    light: PropTypes.string.isRequired
+    water: PropTypes.number.isRequired,
+    light: PropTypes.number.isRequired
   }
 
   render() {
-    const { title, subtitle, light, water } = this.props
+    const { title, subtitle, light, water, img } = this.props
     return (
       <Card data-cy="CardEl">
         <div className="ColumnLeft">
-          <img className="PlantImage" src={exampleSrc} alt="" />
+          <img className="PlantImage" src={img} alt="" />
         </div>
         <div className="ColumnRight">
-          <div className="Head">
+          <div className="Title">
             {title}
-            <div className="Subhead">{subtitle}</div>
+            <div className="Subtitle">{subtitle}</div>
           </div>
+          <IconRange text="Light" icon={'light'} amount={light} />
+          <IconRange text="Water" icon={'drop'} amount={water} />
         </div>
       </Card>
     )

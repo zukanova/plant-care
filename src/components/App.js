@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Card from './Card'
 import Form from './Form'
 
-import headerSrc from '/images/header.svg'
+import headerSrc from '../images/header.svg'
 import CardInfo from '../data.js'
-import data from '../data.js'
+// import data from '../data.js'
 
 const Header = styled.div`
   display: grid;
@@ -17,11 +17,31 @@ const Header = styled.div`
 
 export default class App extends Component {
   state = {
-    plants: CardInfo
+    plants: this.load()
+  }
+
+  save() {
+    localStorage.setItem(
+      'Plant-Care-App--plants',
+      JSON.stringify(this.state.plants)
+    )
+  }
+
+  load() {
+    try {
+      return (
+        JSON.parse(localStorage.getItem('Plant-Care-App--plants')) || CardInfo
+      )
+    } catch (err) {
+      return CardInfo
+    }
+  }
+
+  componentDidUpdate() {
+    this.save()
   }
 
   createCard(newCard) {
-    console.log(this.state.plants)
     this.setState({ plants: [newCard, ...this.state.plants] })
   }
 
@@ -32,7 +52,7 @@ export default class App extends Component {
   }
 
   renderNewCard(item, index) {
-    const { title, subtitle, lightAmount, waterAmount } = item
+    const { title, subtitle, lightAmount, waterAmount, img } = item
     return (
       <Card
         title={title}
@@ -40,6 +60,7 @@ export default class App extends Component {
         light={lightAmount}
         water={waterAmount}
         key={index}
+        img={img}
       />
     )
   }

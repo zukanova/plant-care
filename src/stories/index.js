@@ -34,4 +34,13 @@ storiesOf('FormEl', module).add('form', () => (
   </React.Fragment>
 ))
 
-storiesOf('Navigation', module).add('IconRange', () => <React.Fragment />)
+storiesOf('Navigation', module).add('IconRange', () => (
+  <React.Fragment>
+    <NavLink exact activeClassName="active" to="/">
+      <img src={homeIconSrc} alt="" />
+    </NavLink>
+    <NavLink activeClassName="active" to="/user">
+      <img src={userIconSrc} alt="" />
+    </NavLink>
+  </React.Fragment>
+))

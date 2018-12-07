@@ -2,17 +2,22 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 // import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from '../Card'
-import Form from '../Form'
 import Header from '../Header'
+import Navigation from '../Navigation'
 
-import headerSrc from '../../images/header.svg'
 import CardInfo from '../../data.js'
 
-const Header = styled.div`
+export const Wrapper = styled.section`
   display: grid;
-  justify-content: center;
-  padding-top: 5%;
-  height: 10%;
+  grid-auto-flow: row;
+  grid-template-rows: 50px auto 45px;
+  grid-template-columns: 1fr;
+  height: 100vh;
+`
+
+export const DisplayContent = styled.section`
+  display: block;
+  overflow-y: scroll;
 `
 
 export default class App extends Component {
@@ -67,11 +72,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Wrapper>
         <Header />
-        <Form createCard={newCard => this.createCard(newCard)} />
-        {this.renderAllCards()}
-      </React.Fragment>
+        <DisplayContent>{this.renderAllCards()}</DisplayContent>
+        <Navigation />
+      </Wrapper>
     )
   }
 }

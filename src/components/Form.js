@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import IconRange from './IconRange'
-import addIconSrc from '../images/AddIcon.svg'
+import addIconSrc from '../images/addIcon.svg'
 // import exampleSrc from '../images/placeholderplant.jpg'
 
 import styled from 'styled-components'
@@ -8,9 +8,9 @@ import styled from 'styled-components'
 const Form = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 7%;
-  padding: 2.5%;
-  height: 30%;
+  margin: 10px;
+  padding: 10px;
+  height: auto;
   background-color: white;
   font-family: 'Muli';
   font-weight: 600;
@@ -102,7 +102,6 @@ const Below = styled.div`
 
   button:hover {
     background: #487713;
-    /* color: #3a7999; */
     box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.5);
   }
 

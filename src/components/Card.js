@@ -10,7 +10,7 @@ const Card = styled.section`
   grid-gap: 3%;
   margin: 7%;
   background-color: white;
-  height: 20%;
+  height: 165px;
   font-family: 'Muli';
   border: 1px solid #dcdcdc;
   box-shadow: 0 2px 6px 0 rgba(196, 196, 196, 0.5);

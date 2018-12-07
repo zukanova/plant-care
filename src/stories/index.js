@@ -9,6 +9,7 @@ import StyleBox from './StyleBox'
 import Card from '../components/Card'
 import IconRange from '../components/IconRange'
 import Form from '../components/Form'
+import Navigation from '../components/Navigation'
 
 storiesOf('Card', module).add('card', () => (
   <React.Fragment>
@@ -32,3 +33,5 @@ storiesOf('FormEl', module).add('form', () => (
     <Form />
   </React.Fragment>
 ))
+
+storiesOf('Navigation', module).add('IconRange', () => <React.Fragment />)

@@ -5,6 +5,7 @@ import CardInfo from '../../data.js'
 import Form from '../Form/Form'
 import Header from '../Header'
 import Navigation from '../Navigation'
+import Card from '../Card'
 
 const Wrapper = styled.section`
   display: grid;
@@ -45,13 +46,23 @@ export default class UserScreen extends Component {
     this.save()
   }
 
-  createCard(newCard) {
-    this.setState({ plants: [newCard, ...this.state.plants] })
+  renderAllCards() {
+    return this.props.userPlants.map((item, index) =>
+      this.renderNewCard(item, index)
+    )
   }
 
-  renderAllCards() {
-    return this.state.plants.map((item, index) =>
-      this.renderNewCard(item, index)
+  renderNewCard(item, index) {
+    const { title, subtitle, lightAmount, waterAmount, img } = item
+    return (
+      <Card
+        title={title}
+        subtitle={subtitle}
+        light={lightAmount}
+        water={waterAmount}
+        key={index}
+        img={img}
+      />
     )
   }
 
@@ -60,7 +71,8 @@ export default class UserScreen extends Component {
       <Wrapper>
         <Header />
         <DisplayContent>
-          <Form createCard={newCard => this.createCard(newCard)} />
+          <Form createCard={newCard => this.props.createCard(newCard)} />
+          {this.renderAllCards()}
         </DisplayContent>
         <Navigation />
       </Wrapper>

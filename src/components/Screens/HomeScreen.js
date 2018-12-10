@@ -75,7 +75,6 @@ export default class HomeScreen extends Component {
     return (
       <Wrapper>
         <Header />
-
         <DisplayContent>
           <PlantInfo />
           {this.renderAllCards()}

@@ -6,18 +6,18 @@ import addIconSrc from '../images/addIcon.svg'
 import styled from 'styled-components'
 
 const Form = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-  height: auto;
   background-color: white;
-  font-family: 'Muli';
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  color: #64a61b;
   border: 1px solid #dcdcdc;
   box-shadow: 0 2px 6px 0 rgba(196, 196, 196, 0.5);
+  color: #64a61b;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Muli';
+  font-weight: 600;
+  height: auto;
+  letter-spacing: 1.2px;
+  margin: 10px;
+  padding: 10px;
 
   .formTitle {
     display: flex;
@@ -27,8 +27,8 @@ const Form = styled.section`
 
   .openIcon {
     opacity: 0.4;
-    transition: all 0.7s ease;
     transform: rotate(45deg);
+    transition: all 0.7s ease;
   }
 
   .hidden {
@@ -49,23 +49,23 @@ const Form = styled.section`
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 40px 40px 60px;
+  grid-template-rows: 40px 40px 70px;
   grid-gap: 4px;
 
-  input {
-    border-radius: 7px;
-    border: 1px solid #64a61b;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    padding: 8px;
-    font-family: 'Muli';
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 2;
-    letter-spacing: 1px;
-    color: #64a61b;
+  .textInput {
     align-self: center;
+    border: 1px solid #64a61b;
+    border-left: 0;
+    border-radius: 7px;
+    border-right: 0;
+    border-top: 0;
+    color: #64a61b;
+    font-family: 'Muli';
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 8px;
   }
 
   input:focus {
@@ -79,18 +79,22 @@ const Wrapper = styled.div`
 `
 const Below = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-gap: 5px;
   margin-top: 7px;
 
-  .columnLeft {
-    padding-top: 28px;
+  .columnRight {
+    display: grid;
+
+    grid-gap: 7px;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
   }
-  .addButton {
+
+  button {
     background: #64a61b;
     border: 0px;
     border-radius: 2px;
-    width: 98%;
     height: 23px;
     box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.2);
     font-family: 'Muli';
@@ -98,6 +102,7 @@ const Below = styled.div`
     font-size: 12px;
     letter-spacing: 0.5px;
     color: white;
+    width: 95%;
   }
 
   button:hover {
@@ -105,11 +110,36 @@ const Below = styled.div`
     box-shadow: 0 2px 3px 0 rgba(127, 126, 126, 0.5);
   }
 
-  .columnRight {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-gap: 4px;
-    align-items: center;
+  [type='file'] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
+
+  [type='file'] + label {
+    border-radius: 2px;
+    justify-content: center;
+
+    border: 1px solid gainsboro;
+    color: #64a61b;
+    display: inline-block;
+    font-family: 'Muli';
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 9px;
+    padding: 5px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    width: 95%;
+
+    &:hover {
+      border: 1px solid #64a61b;
+    }
+
+    /* .sectionTop {
+      padding-bottom: 20px;
+    } */
   }
 `
 
@@ -163,6 +193,7 @@ export default class FormEl extends Component {
         <Wrapper className={this.state.showCard ? 'visible' : 'hidden'}>
           <input
             type="text"
+            className="textInput"
             placeholder="Plantname"
             ref={this.nameInputRef}
             onChange={event => {
@@ -173,6 +204,7 @@ export default class FormEl extends Component {
           />
           <input
             type="text"
+            className="textInput"
             placeholder="Description"
             ref={this.descriptionInputRef}
             onChange={event => {
@@ -183,8 +215,9 @@ export default class FormEl extends Component {
           />
           <Below>
             <div className="columnLeft">
+              <input type="file" className="inputfile" id="file" />
+              <label htmlFor="file">Upload image</label>
               <button
-                className="addButton"
                 onClick={event => {
                   this.props.createCard(this.state.newCard)
                   this.resetInput(event)

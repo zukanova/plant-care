@@ -9,6 +9,10 @@ const Wrapper = styled.nav`
   display: flex;
   border-top: 2px solid white;
 
+  img {
+    height: 24px;
+  }
+
   a:any-link {
     display: flex;
     align-items: center;
@@ -18,11 +22,7 @@ const Wrapper = styled.nav`
     box-shadow: 1px -1px 7px 0 #dedede;
 
     &.active {
-      color: #64a61b;
-    }
-
-    &:first-child {
-      border-right: 1px solid white;
+      opacity: 0.3;
     }
   }
 `

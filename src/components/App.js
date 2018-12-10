@@ -15,11 +15,11 @@ export default class App extends Component {
     showAllCards: true
   }
 
-  // toggleShowAllCards = () => {
-  //   this.setState({
-  //     showAllCards: !this.state.showAllCards
-  //   })
-  // }
+  toggleShowAllCards = () => {
+    this.setState({
+      showAllCards: !this.state.showAllCards
+    })
+  }
 
   render() {
     return (

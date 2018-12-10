@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import CardInfo from '../../data.js'
 
 import Form from '../Form'
 import Header from '../Header'
@@ -18,6 +19,41 @@ export const DisplayContent = styled.section`
   overflow-y: scroll;
 `
 export default class UserScreen extends Component {
+  state = {
+    plants: this.load()
+  }
+
+  save() {
+    localStorage.setItem(
+      'Plant-Care-App--plants',
+      JSON.stringify(this.state.plants)
+    )
+  }
+
+  load() {
+    try {
+      return (
+        JSON.parse(localStorage.getItem('Plant-Care-App--plants')) || CardInfo
+      )
+    } catch (err) {
+      return CardInfo
+    }
+  }
+
+  componentDidUpdate() {
+    this.save()
+  }
+
+  createCard(newCard) {
+    this.setState({ plants: [newCard, ...this.state.plants] })
+  }
+
+  renderAllCards() {
+    return this.state.plants.map((item, index) =>
+      this.renderNewCard(item, index)
+    )
+  }
+
   render() {
     return (
       <Wrapper>

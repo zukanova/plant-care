@@ -2,15 +2,16 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-import homeIconSrc from '../images/home.svg'
-import userIconSrc from '../images/user.svg'
+import { ReactComponent as HomeIcon } from '../images/home.svg'
+import { ReactComponent as UserIcon } from '../images/user.svg'
 
 const Wrapper = styled.nav`
   display: flex;
   border-top: 2px solid white;
 
-  img {
+  svg {
     height: 24px;
+    color: #bcbcbc;
   }
 
   a:any-link {
@@ -21,8 +22,8 @@ const Wrapper = styled.nav`
     background: white;
     box-shadow: 1px -1px 7px 0 #dedede;
 
-    &.active {
-      opacity: 0.3;
+    &.active svg {
+      color: #64a61b;
     }
   }
 `
@@ -30,10 +31,10 @@ const Wrapper = styled.nav`
 export default props => (
   <Wrapper data-cy="Navigation">
     <NavLink exact activeClassName="active" to="/">
-      <img src={homeIconSrc} alt="" />
+      <HomeIcon />
     </NavLink>
     <NavLink activeClassName="active" to="/user">
-      <img src={userIconSrc} alt="" />
+      <UserIcon />
     </NavLink>
   </Wrapper>
 )

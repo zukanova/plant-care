@@ -3,11 +3,12 @@ import styled from 'styled-components'
 // import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Card from '../Card'
 import Header from '../Header'
+import PlantInfo from '../PlantInfo'
 import Navigation from '../Navigation'
 
 import CardInfo from '../../data.js'
 
-export const Wrapper = styled.section`
+const Wrapper = styled.section`
   display: grid;
   grid-auto-flow: row;
   grid-template-rows: 50px auto 45px;
@@ -15,12 +16,12 @@ export const Wrapper = styled.section`
   height: 100vh;
 `
 
-export const DisplayContent = styled.section`
+const DisplayContent = styled.section`
   display: block;
   overflow-y: scroll;
 `
 
-export default class App extends Component {
+export default class HomeScreen extends Component {
   state = {
     plants: this.load()
   }
@@ -46,9 +47,9 @@ export default class App extends Component {
     this.save()
   }
 
-  createCard(newCard) {
-    this.setState({ plants: [newCard, ...this.state.plants] })
-  }
+  // createCard(newCard) {
+  //   this.setState({ plants: [newCard, ...this.state.plants] })
+  // }
 
   renderAllCards() {
     return this.state.plants.map((item, index) =>
@@ -74,7 +75,11 @@ export default class App extends Component {
     return (
       <Wrapper>
         <Header />
-        <DisplayContent>{this.renderAllCards()}</DisplayContent>
+
+        <DisplayContent>
+          <PlantInfo />
+          {this.renderAllCards()}
+        </DisplayContent>
         <Navigation />
       </Wrapper>
     )

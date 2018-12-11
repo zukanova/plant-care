@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import HomeScreen from './screens/HomeScreen'
-import UserScreen from './screens/UserScreen'
+import HomeScreen from './Screens/HomeScreen'
+import UserScreen from './Screens/UserScreen'
 
 import CardInfo from '../data.js'
 

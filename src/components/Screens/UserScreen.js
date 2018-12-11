@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import CardInfo from '../../data.js'
 
 import Form from '../Form/Form'
 import Header from '../Header'
@@ -21,31 +20,6 @@ const DisplayContent = styled.section`
 `
 
 export default class UserScreen extends Component {
-  state = {
-    plants: this.load()
-  }
-
-  save() {
-    localStorage.setItem(
-      'Plant-Care-App--plants',
-      JSON.stringify(this.state.plants)
-    )
-  }
-
-  load() {
-    try {
-      return (
-        JSON.parse(localStorage.getItem('Plant-Care-App--plants')) || CardInfo
-      )
-    } catch (err) {
-      return CardInfo
-    }
-  }
-
-  componentDidUpdate() {
-    this.save()
-  }
-
   renderAllCards() {
     return this.props.userPlants.map((item, index) =>
       this.renderNewCard(item, index)

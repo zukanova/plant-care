@@ -83,10 +83,9 @@ export default class FormEl extends Component {
   render() {
     return (
       <Wrapper>
-        <div className="formTitle">
+        <div className="formTitle" onClick={() => this.toggleCard()}>
           ADD YOUR PLANTS HERE
           <img
-            onClick={() => this.toggleCard()}
             className={this.state.showCard ? 'openIcon' : ''}
             src={addIconSrc}
             alt=""

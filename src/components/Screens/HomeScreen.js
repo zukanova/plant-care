@@ -6,8 +6,6 @@ import Header from '../Header'
 import PlantInfo from '../PlantInfo'
 import Navigation from '../Navigation'
 
-import CardInfo from '../../data.js'
-
 const Wrapper = styled.section`
   display: grid;
   grid-auto-flow: row;
@@ -22,37 +20,12 @@ const DisplayContent = styled.section`
 `
 
 export default class HomeScreen extends Component {
-  state = {
-    plants: this.load()
-  }
-
-  save() {
-    localStorage.setItem(
-      'Plant-Care-App--plants',
-      JSON.stringify(this.state.plants)
-    )
-  }
-
-  load() {
-    try {
-      return (
-        JSON.parse(localStorage.getItem('Plant-Care-App--plants')) || CardInfo
-      )
-    } catch (err) {
-      return CardInfo
-    }
-  }
-
   componentDidUpdate() {
     this.save()
   }
 
-  // createCard(newCard) {
-  //   this.setState({ plants: [newCard, ...this.state.plants] })
-  // }
-
   renderAllCards() {
-    return this.state.plants.map((item, index) =>
+    return this.props.plants.map((item, index) =>
       this.renderNewCard(item, index)
     )
   }

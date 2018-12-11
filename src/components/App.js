@@ -51,13 +51,19 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state.plants)
     return (
       <Router>
         <Wrapper>
           <Route
             exact
             path="/"
-            render={() => <HomeScreen showAllCards={this.state.showAllCards} />}
+            render={() => (
+              <HomeScreen
+                showAllCards={this.state.showAllCards}
+                plants={this.state.plants.filter(card => card.user === false)}
+              />
+            )}
           />
           <Route
             path="/user"

@@ -20,10 +20,6 @@ const DisplayContent = styled.section`
 `
 
 export default class HomeScreen extends Component {
-  componentDidUpdate() {
-    this.save()
-  }
-
   renderAllCards() {
     return this.props.plants.map((item, index) =>
       this.renderNewCard(item, index)

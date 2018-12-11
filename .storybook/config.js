@@ -101,7 +101,7 @@ addDecorator(story => (
 //   <StyleBox
 //     p="20px 25%"
 //     m="0 0 20px 0"
-//     bg="src="../../images/background.png""
+//     bg="src="../../Images/background.png""
 //   >
 //     {story()}
 //     <GlobalStyle />

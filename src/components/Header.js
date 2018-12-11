@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import styled from 'styled-components'
-import headerSrc from '../images/header.svg'
+import headerSrc from '../Images/header.svg'
 
 const Header = styled.div`
   display: grid;

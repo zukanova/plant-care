@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { ReactComponent as HomeIcon } from '../images/home.svg'
-import { ReactComponent as UserIcon } from '../images/user.svg'
+import { ReactComponent as HomeIcon } from '../Images/home.svg'
+import { ReactComponent as UserIcon } from '../Images/user.svg'
 
 const Wrapper = styled.nav`
   display: flex;

@@ -7,7 +7,7 @@ import { text, boolean, number } from '@storybook/addon-knobs'
 import StyleBox from './StyleBox'
 
 import Card from '../components/Card'
-import addIconSrc from '../../images/addIcon.svg'
+import addIconSrc from '../../Images/addIcon.svg'
 import IconRange from '../components/IconRange'
 import Form from '../components/Form/Form'
 // import Plantinfo from '../components/Form/PlantInfo'

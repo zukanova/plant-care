@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import background from '../images/background.jpg'
+import background from '../Images/background.jpg'
 const PlantInfo = styled.section`
   /* background-image: url(${background}); */
   background-image: contain;

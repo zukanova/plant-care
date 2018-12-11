@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import IconRange from '../IconRange'
-import addIconSrc from '../../images/addIcon.svg'
+import addIconSrc from '../../Images/addIcon.svg'
 
 import Wrapper from './Wrapper'
 import Grid from './Grid'

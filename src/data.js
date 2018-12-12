@@ -1,7 +1,7 @@
 export default [
   {
     title: 'Ficus Alii',
-    subtitle: 'Ficus Alii',
+    subtitle: 'Ficus alii',
     lightAmount: 3,
     waterAmount: 3,
     img: '/images/ficusalii.jpg',
@@ -66,7 +66,7 @@ export default [
   },
   {
     title: 'Drachenbaum',
-    subtitle: 'Dracaena Marginata',
+    subtitle: 'Dracaena marginata',
     lightAmount: 2,
     waterAmount: 1,
     img: '/images/drachenbaum.jpg',
